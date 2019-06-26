@@ -30,7 +30,7 @@ type Duration struct {
 	months  MonthsDays
 }
 
-func GetFullDate(date YearMonthDay) string {
+func (date YearMonthDay)GetFullDate() string {
 	dateTime := time.Date(date.year, time.Month(date.month), date.day, 0, 0, 0, 0, time.UTC)
 	return fmt.Sprintf("%s, %v %s %v", dateTime.Weekday(), dateTime.Day(), dateTime.Month(), dateTime.Year())
 }

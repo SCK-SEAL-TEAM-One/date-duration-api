@@ -12,7 +12,7 @@ func Test_GetFullDate_By_Year_1997_Month_10_Day_16_Should_Get_Thursday_16_Octobe
 	}
 	expectedResult := "Thursday, 16 October 1997"
 
-	actualResult := GetFullDate(date)
+	actualResult := date.GetFullDate()
 
 	if expectedResult != actualResult {
 		t.Errorf("Expected %s but got %s", expectedResult, actualResult)
@@ -27,7 +27,7 @@ func Test_GetFullDate_By_Year_1997_Month_10_Day_27_Should_Get_Monday_27_October_
 	}
 	expectedResult := "Monday, 27 October 1997"
 
-	actualResult := GetFullDate(date)
+	actualResult := date.GetFullDate()
 
 	if expectedResult != actualResult {
 		t.Errorf("Expected %s but got %s", expectedResult, actualResult)
@@ -42,7 +42,7 @@ func Test_GetFullDate_By_Year_1996_Month_2_Day_5_Should_Get_Monday_5_February_19
 	}
 	expectedResult := "Monday, 5 February 1996"
 
-	actualResult := GetFullDate(date)
+	actualResult := date.GetFullDate()
 
 	if expectedResult != actualResult {
 		t.Errorf("Expected %s but got %s", expectedResult, actualResult)
