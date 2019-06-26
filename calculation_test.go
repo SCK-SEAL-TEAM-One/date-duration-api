@@ -48,3 +48,75 @@ func Test_GetFullDate_By_Year_1996_Month_2_Day_5_Should_Get_Monday_5_February_19
 		t.Errorf("Expected %s but got %s", expectedResult, actualResult)
 	}
 }
+
+func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_16_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_683164800_Seconds_11386080_Minutes_189768_Hours(t *testing.T) {
+	startDate := YearMonthDay{
+		year:  1997,
+		month: 10,
+		day:   16,
+	}
+	endDate := YearMonthDay{
+		year:  2019,
+		month: 6,
+		day:   10,
+	}
+	expectedResult := Duration{
+		seconds: 683164800,
+		minutes: 11386080,
+		hours: 189768,
+	}
+
+	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_27_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_682214400_Seconds_11370240_Minutes_189504_Hours(t *testing.T) {
+	startDate := YearMonthDay{
+		year:  1997,
+		month: 10,
+		day:   27,
+	}
+	endDate := YearMonthDay{
+		year:  2019,
+		month: 6,
+		day:   10,
+	}
+	expectedResult := Duration{
+		seconds: 682214400,
+		minutes: 11370240,
+		hours: 189504,
+	}
+
+	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1996_StartMonth_2_StartDay_5_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_736646400_Seconds_12277440_Minutes_204624_Hours(t *testing.T) {
+	startDate := YearMonthDay{
+		year:  1996,
+		month: 2,
+		day:   5,
+	}
+	endDate := YearMonthDay{
+		year:  2019,
+		month: 6,
+		day:   10,
+	}
+	expectedResult := Duration{
+		seconds: 736646400,
+		minutes: 12277440,
+		hours: 204624,
+	}
+
+	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
