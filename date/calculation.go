@@ -30,7 +30,7 @@ type Duration struct {
 	months  MonthsDays
 }
 
-func (date YearMonthDay)GetFullDate() string {
+func (date YearMonthDay) GetFullDate() string {
 	dateTime := time.Date(date.year, time.Month(date.month), date.day, 0, 0, 0, 0, time.UTC)
 	return fmt.Sprintf("%s, %v %s %v", dateTime.Weekday(), dateTime.Day(), dateTime.Month(), dateTime.Year())
 }
@@ -54,5 +54,19 @@ func (d Duration) GetWeeks() WeeksDays {
 	return WeeksDays{
 		weeks: d.days / 7,
 		days:  d.days % 7,
+	}
+}
+
+func CalculateMonths(startDate YearMonthDay, endDate YearMonthDay) MonthsDays {
+	diffYear := endDate.year - startDate.year
+	diffMonth := endDate.month - startDate.month + (diffYear * 12)
+	diffDay := endDate.day - startDate.day
+	if diffDay<0 {
+		diffDay+=31
+		diffMonth--
+	}
+	return MonthsDays{
+		months: diffMonth,
+		days:   diffDay,
 	}
 }
