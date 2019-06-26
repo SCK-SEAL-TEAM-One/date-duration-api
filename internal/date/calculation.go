@@ -5,10 +5,10 @@ import (
 	"time"
 )
 
-const HOURS_IN_DAY = 24
-const DAYS_IN_WEEK = 7
-const DAYS_IN_MONTH = 31
-const MONTHS_IN_YEAR = 12
+const HoursInDay = 24
+const DaysInWeek = 7
+const DaysInMonth = 31
+const MonthsInYear = 12
 
 type YearMonthDay struct {
 	Year  int `json:"year"`
@@ -55,22 +55,22 @@ func CalculateDurationStartTimeToEndTime(startDate YearMonthDay, endDate YearMon
 }
 
 func (d Duration) GetDays() int {
-	return d.Hours / HOURS_IN_DAY
+	return d.Hours / HoursInDay
 }
 
 func (d Duration) GetWeeks() WeeksDays {
 	return WeeksDays{
-		Weeks: d.Days / DAYS_IN_WEEK,
-		Days:  d.Days % DAYS_IN_WEEK,
+		Weeks: d.Days / DaysInWeek,
+		Days:  d.Days % DaysInWeek,
 	}
 }
 
 func CalculateMonths(startDate YearMonthDay, endDate YearMonthDay) MonthsDays {
 	diffYear := endDate.Year - startDate.Year
-	diffMonth := endDate.Month - startDate.Month + (diffYear * MONTHS_IN_YEAR)
+	diffMonth := endDate.Month - startDate.Month + (diffYear * MonthsInYear)
 	diffDay := endDate.Day - startDate.Day
 	if diffDay < 0 {
-		diffDay += DAYS_IN_MONTH
+		diffDay += DaysInMonth
 		diffMonth--
 	}
 	return MonthsDays{
