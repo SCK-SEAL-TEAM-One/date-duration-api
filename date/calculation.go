@@ -6,66 +6,66 @@ import (
 )
 
 type YearMonthDay struct {
-	year  int `json:"year"`
-	month int `json:"month"`
-	day   int `json:"day"`
+	Year  int `json:"Year"`
+	Month int `json:"Month"`
+	Day   int `json:"Day"`
 }
 
 type Duration struct {
-	seconds int `json:"seconds"`
-	minutes int `json:"minutes"`
-	hours int `json:"hours"`
-	days int `json:"days"`
-	weeks WeeksDays `json:"weeks"`
-	months MonthsDays `json:"months"`
+	Seconds int        `json:"Seconds"`
+	Minutes int        `json:"Minutes"`
+	Hours   int        `json:"Hours"`
+	Days    int        `json:"Days"`
+	Weeks   WeeksDays  `json:"Weeks"`
+	Months  MonthsDays `json:"Months"`
 }
 type WeeksDays struct {
-	weeks int `json:"weeks"`
-	days int `json:"days"`
+	Weeks int `json:"Weeks"`
+	Days  int `json:"Days"`
 }
 
 type MonthsDays struct {
-	months int `json:"months"`
-	days int `json:"days"`
+	Months int `json:"Months"`
+	Days   int `json:"Days"`
 }
 
 func (date YearMonthDay) GetFullDate() string {
-	dateTime := time.Date(date.year, time.Month(date.month), date.day, 0, 0, 0, 0, time.UTC)
+	dateTime := time.Date(date.Year, time.Month(date.Month), date.Day, 0, 0, 0, 0, time.UTC)
 	return fmt.Sprintf("%s, %v %s %v", dateTime.Weekday(), dateTime.Day(), dateTime.Month(), dateTime.Year())
 }
 
 func CalculateDurationStartTimeToEndTime(startDate YearMonthDay, endDate YearMonthDay) Duration {
-	start := time.Date(startDate.year, time.Month(startDate.month), startDate.day, 0, 0, 0, 0, time.UTC)
-	end := time.Date(endDate.year, time.Month(endDate.month), endDate.day, 0, 0, 0, 0, time.UTC)
+	start := time.Date(startDate.Year, time.Month(startDate.Month), startDate.Day, 0, 0, 0, 0, time.UTC)
+	end := time.Date(endDate.Year, time.Month(endDate.Month), endDate.Day, 0, 0, 0, 0, time.UTC)
 	diff := end.Sub(start)
 	return Duration{
-		seconds: int(diff.Seconds()),
-		minutes: int(diff.Minutes()),
-		hours:   int(diff.Hours()),
+		Seconds: int(diff.Seconds()),
+		Minutes: int(diff.Minutes()),
+		Hours:   int(diff.Hours()),
 	}
 }
 
 func (d Duration) GetDays() int {
-	return d.hours / 24
+	return d.Hours / 24
 }
 
 func (d Duration) GetWeeks() WeeksDays {
 	return WeeksDays{
-		weeks: d.days / 7,
-		days:  d.days % 7,
+		Weeks: d.Days / 7,
+		Days:  d.Days % 7,
 	}
 }
 
 func CalculateMonths(startDate YearMonthDay, endDate YearMonthDay) MonthsDays {
-	diffYear := endDate.year - startDate.year
-	diffMonth := endDate.month - startDate.month + (diffYear * 12)
-	diffDay := endDate.day - startDate.day
+	diffYear := endDate.Year - startDate.Year
+	diffMonth := endDate.Month - startDate.Month + (diffYear * 12)
+	diffDay := endDate.Day - startDate.Day
 	if diffDay<0 {
 		diffDay+=31
 		diffMonth--
 	}
 	return MonthsDays{
-		months: diffMonth,
-		days:   diffDay,
+		Months: diffMonth,
+		Days:   diffDay,
 	}
 }

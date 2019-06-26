@@ -6,9 +6,9 @@ import (
 
 func Test_GetFullDate_By_Year_1997_Month_10_Day_16_Should_Get_Thursday_16_October_1997(t *testing.T) {
 	date := YearMonthDay{
-		year:  1997,
-		month: 10,
-		day:   16,
+		Year:  1997,
+		Month: 10,
+		Day:   16,
 	}
 	expectedResult := "Thursday, 16 October 1997"
 
@@ -21,9 +21,9 @@ func Test_GetFullDate_By_Year_1997_Month_10_Day_16_Should_Get_Thursday_16_Octobe
 
 func Test_GetFullDate_By_Year_1997_Month_10_Day_27_Should_Get_Monday_27_October_1997(t *testing.T) {
 	date := YearMonthDay{
-		year:  1997,
-		month: 10,
-		day:   27,
+		Year:  1997,
+		Month: 10,
+		Day:   27,
 	}
 	expectedResult := "Monday, 27 October 1997"
 
@@ -36,9 +36,9 @@ func Test_GetFullDate_By_Year_1997_Month_10_Day_27_Should_Get_Monday_27_October_
 
 func Test_GetFullDate_By_Year_1996_Month_2_Day_5_Should_Get_Monday_5_February_1996(t *testing.T) {
 	date := YearMonthDay{
-		year:  1996,
-		month: 2,
-		day:   5,
+		Year:  1996,
+		Month: 2,
+		Day:   5,
 	}
 	expectedResult := "Monday, 5 February 1996"
 
@@ -51,19 +51,19 @@ func Test_GetFullDate_By_Year_1996_Month_2_Day_5_Should_Get_Monday_5_February_19
 
 func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_16_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_683164800_Seconds_11386080_Minutes_189768_Hours(t *testing.T) {
 	startDate := YearMonthDay{
-		year:  1997,
-		month: 10,
-		day:   16,
+		Year:  1997,
+		Month: 10,
+		Day:   16,
 	}
 	endDate := YearMonthDay{
-		year:  2019,
-		month: 6,
-		day:   10,
+		Year:  2019,
+		Month: 6,
+		Day:   10,
 	}
 	expectedResult := Duration{
-		seconds: 683164800,
-		minutes: 11386080,
-		hours:   189768,
+		Seconds: 683164800,
+		Minutes: 11386080,
+		Hours:   189768,
 	}
 
 	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
@@ -75,19 +75,19 @@ func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_St
 
 func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_27_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_682214400_Seconds_11370240_Minutes_189504_Hours(t *testing.T) {
 	startDate := YearMonthDay{
-		year:  1997,
-		month: 10,
-		day:   27,
+		Year:  1997,
+		Month: 10,
+		Day:   27,
 	}
 	endDate := YearMonthDay{
-		year:  2019,
-		month: 6,
-		day:   10,
+		Year:  2019,
+		Month: 6,
+		Day:   10,
 	}
 	expectedResult := Duration{
-		seconds: 682214400,
-		minutes: 11370240,
-		hours:   189504,
+		Seconds: 682214400,
+		Minutes: 11370240,
+		Hours:   189504,
 	}
 
 	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
@@ -99,19 +99,19 @@ func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_St
 
 func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1996_StartMonth_2_StartDay_5_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_736646400_Seconds_12277440_Minutes_204624_Hours(t *testing.T) {
 	startDate := YearMonthDay{
-		year:  1996,
-		month: 2,
-		day:   5,
+		Year:  1996,
+		Month: 2,
+		Day:   5,
 	}
 	endDate := YearMonthDay{
-		year:  2019,
-		month: 6,
-		day:   10,
+		Year:  2019,
+		Month: 6,
+		Day:   10,
 	}
 	expectedResult := Duration{
-		seconds: 736646400,
-		minutes: 12277440,
-		hours:   204624,
+		Seconds: 736646400,
+		Minutes: 12277440,
+		Hours:   204624,
 	}
 
 	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
@@ -123,7 +123,7 @@ func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1996_StartMonth_2_Sta
 
 func Test_GetDays_By_Hours_189768_Should_Get_7907_Days(t *testing.T) {
 	duration := Duration{
-		hours: 189768,
+		Hours: 189768,
 	}
 	expectedResult := 7907
 
@@ -136,7 +136,7 @@ func Test_GetDays_By_Hours_189768_Should_Get_7907_Days(t *testing.T) {
 
 func Test_GetDays_By_Hours_189504_Should_Get_7896_Days(t *testing.T) {
 	duration := Duration{
-		hours: 189504,
+		Hours: 189504,
 	}
 	expectedResult := 7896
 
@@ -149,7 +149,7 @@ func Test_GetDays_By_Hours_189504_Should_Get_7896_Days(t *testing.T) {
 
 func Test_GetDays_By_Hours_204264_Should_Get_8526_Days(t *testing.T) {
 	duration := Duration{
-		hours: 204624,
+		Hours: 204624,
 	}
 	expectedResult := 8526
 
@@ -162,11 +162,11 @@ func Test_GetDays_By_Hours_204264_Should_Get_8526_Days(t *testing.T) {
 
 func Test_GetWeeks_By_Days_7907_Should_Get_1129_Weeks_4_Days(t *testing.T) {
 	duration := Duration{
-		days: 7907,
+		Days: 7907,
 	}
 	expectedResult := WeeksDays{
-		weeks: 1129,
-		days:  4,
+		Weeks: 1129,
+		Days:  4,
 	}
 
 	actualResult := duration.GetWeeks()
@@ -178,11 +178,11 @@ func Test_GetWeeks_By_Days_7907_Should_Get_1129_Weeks_4_Days(t *testing.T) {
 
 func Test_GetWeeks_By_Days_7896_Should_Get_1128_Weeks_0_Days(t *testing.T) {
 	duration := Duration{
-		days: 7896,
+		Days: 7896,
 	}
 	expectedResult := WeeksDays{
-		weeks: 1128,
-		days:  0,
+		Weeks: 1128,
+		Days:  0,
 	}
 
 	actualResult := duration.GetWeeks()
@@ -194,11 +194,11 @@ func Test_GetWeeks_By_Days_7896_Should_Get_1128_Weeks_0_Days(t *testing.T) {
 
 func Test_GetWeeks_By_Days_8526_Should_Get_1218_Weeks_0_Days(t *testing.T) {
 	duration := Duration{
-		days: 8526,
+		Days: 8526,
 	}
 	expectedResult := WeeksDays{
-		weeks: 1218,
-		days:  0,
+		Weeks: 1218,
+		Days:  0,
 	}
 
 	actualResult := duration.GetWeeks()
@@ -210,18 +210,18 @@ func Test_GetWeeks_By_Days_8526_Should_Get_1218_Weeks_0_Days(t *testing.T) {
 
 func Test_CalculateMonths_By_StartYear_1997_StartMonth_10_StartDay_16_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_259_Months_25_Days(t *testing.T) {
 	startDate := YearMonthDay{
-		year:  1997,
-		month: 10,
-		day:   16,
+		Year:  1997,
+		Month: 10,
+		Day:   16,
 	}
 	endDate := YearMonthDay{
-		year:  2019,
-		month: 6,
-		day:   10,
+		Year:  2019,
+		Month: 6,
+		Day:   10,
 	}
 	expectedResult := MonthsDays{
-		months: 259,
-		days:   25,
+		Months: 259,
+		Days:   25,
 	}
 
 	actualResult := CalculateMonths(startDate, endDate)
@@ -233,18 +233,18 @@ func Test_CalculateMonths_By_StartYear_1997_StartMonth_10_StartDay_16_EndYear_20
 
 func Test_CalculateMonths_By_StartYear_1997_StartMonth_10_StartDay_27_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_259_Months_14_Days(t *testing.T) {
 	startDate := YearMonthDay{
-		year:  1997,
-		month: 10,
-		day:   27,
+		Year:  1997,
+		Month: 10,
+		Day:   27,
 	}
 	endDate := YearMonthDay{
-		year:  2019,
-		month: 6,
-		day:   10,
+		Year:  2019,
+		Month: 6,
+		Day:   10,
 	}
 	expectedResult := MonthsDays{
-		months: 259,
-		days:   14,
+		Months: 259,
+		Days:   14,
 	}
 
 	actualResult := CalculateMonths(startDate, endDate)
@@ -256,18 +256,18 @@ func Test_CalculateMonths_By_StartYear_1997_StartMonth_10_StartDay_27_EndYear_20
 
 func Test_CalculateMonths_By_StartYear_1996_StartMonth_2_StartDay_5_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_280_Months_5_Days(t *testing.T) {
 	startDate := YearMonthDay{
-		year:  1996,
-		month: 2,
-		day:   5,
+		Year:  1996,
+		Month: 2,
+		Day:   5,
 	}
 	endDate := YearMonthDay{
-		year:  2019,
-		month: 6,
-		day:   10,
+		Year:  2019,
+		Month: 6,
+		Day:   10,
 	}
 	expectedResult := MonthsDays{
-		months: 280,
-		days:   5,
+		Months: 280,
+		Days:   5,
 	}
 
 	actualResult := CalculateMonths(startDate, endDate)
