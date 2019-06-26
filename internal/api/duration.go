@@ -4,7 +4,6 @@ import (
 	"../date"
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -28,8 +27,8 @@ func CalculateDateDuration(w http.ResponseWriter, r *http.Request) {
 		Duration:      date.CalculateDurationStartTimeToEndTime(requestDate.StartDate, requestDate.EndDate),
 	}
 
-	responseJSON, _ := json.Marshal(response)
-	fmt.Fprintf(w, "%+v", string(responseJSON))
+	enc := json.NewEncoder(w)
+	enc.Encode(response)
 }
 
 func GetRequestDateFromRequestBody(r *http.Request) RequestDate {
