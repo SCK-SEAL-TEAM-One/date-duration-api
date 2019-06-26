@@ -6,28 +6,27 @@ import (
 )
 
 type YearMonthDay struct {
-	year  int
-	month int
-	day   int
-}
-
-type WeeksDays struct {
-	weeks int
-	days  int
-}
-
-type MonthsDays struct {
-	months int
-	days   int
+	year  int `json:"year"`
+	month int `json:"month"`
+	day   int `json:"day"`
 }
 
 type Duration struct {
-	seconds int
-	minutes int
-	hours   int
-	days    int
-	weeks   WeeksDays
-	months  MonthsDays
+	seconds int `json:"seconds"`
+	minutes int `json:"minutes"`
+	hours int `json:"hours"`
+	days int `json:"days"`
+	weeks WeeksDays `json:"weeks"`
+	months MonthsDays `json:"months"`
+}
+type WeeksDays struct {
+	weeks int `json:"weeks"`
+	days int `json:"days"`
+}
+
+type MonthsDays struct {
+	months int `json:"months"`
+	days int `json:"days"`
 }
 
 func (date YearMonthDay)GetFullDate() string {
