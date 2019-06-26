@@ -46,6 +46,13 @@ func CalculateDurationStartTimeToEndTime(startDate YearMonthDay, endDate YearMon
 	}
 }
 
-func (d Duration)GetDays() int {
-	return d.hours/24
+func (d Duration) GetDays() int {
+	return d.hours / 24
+}
+
+func (d Duration) GetWeeks() WeeksDays {
+	return WeeksDays{
+		weeks: d.days / 7,
+		days:  d.days % 7,
+	}
 }
