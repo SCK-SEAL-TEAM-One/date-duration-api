@@ -21,20 +21,24 @@ type ResponseBody struct {
 
 func CalculateDateDuration(w http.ResponseWriter, r *http.Request) {
 	requestDate := GetRequestDateFromRequestBody(r)
-	duration := ResponseBody{
+	dateDuration := date.CalculateDurationStartTimeToEndTime(requestDate.StartDate,requestDate.EndDate)
+	duration := date.Duration{
+		Seconds: dateDuration.Seconds,
+		Minutes: dateDuration.Minutes,
+		Hours:   dateDuration.Hours,
+		Days:    dateDuration.GetDays(),
+		Months:  date.CalculateMonths(requestDate.StartDate,requestDate.EndDate),
+	}
+	duration.Weeks = duration.GetWeeks()
+
+	response := ResponseBody{
 		StartFullDate: requestDate.StartDate.GetFullDate(),
 		EndFullDate:   requestDate.EndDate.GetFullDate(),
-		Duration: date.Duration{
-			Seconds: date.CalculateDurationStartTimeToEndTime(requestDate.StartDate,requestDate.EndDate).Seconds,
-			Minutes: date.CalculateDurationStartTimeToEndTime(requestDate.StartDate,requestDate.EndDate).Minutes,
-			Hours:   date.CalculateDurationStartTimeToEndTime(requestDate.StartDate,requestDate.EndDate).Hours,
-			Days:    date.CalculateDurationStartTimeToEndTime(requestDate.StartDate,requestDate.EndDate).GetDays(),
-			Months:  date.CalculateMonths(requestDate.StartDate,requestDate.EndDate),
-		},
+		Duration: duration,
 	}
-
-	durationJSON,_ := json.Marshal(duration)
-	fmt.Fprintf(w, "%+v",string(durationJSON))
+	
+	responseJSON,_ := json.Marshal(response)
+	fmt.Fprintf(w, "%+v",string(responseJSON))
 }
 
 func GetRequestDateFromRequestBody(r *http.Request) RequestDate {
