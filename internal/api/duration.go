@@ -2,6 +2,7 @@ package api
 
 import (
 	"../date"
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -44,6 +45,7 @@ func CalculateDateDuration(w http.ResponseWriter, r *http.Request) {
 func GetRequestDateFromRequestBody(r *http.Request) RequestDate {
 	body, _ := ioutil.ReadAll(r.Body)
 	var requestDate RequestDate
-	_ = json.Unmarshal(body, &requestDate)
+	decode := json.NewDecoder(bytes.NewReader(body))
+	decode.Decode(&requestDate)
 	return requestDate
 }
