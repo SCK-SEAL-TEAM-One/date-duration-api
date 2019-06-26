@@ -39,15 +39,19 @@ func (date YearMonthDay) GetFullDate() string {
 	return fmt.Sprintf("%s, %v %s %v", dateTime.Weekday(), dateTime.Day(), dateTime.Month(), dateTime.Year())
 }
 
-func CalculateDurationStartTimeToEndTime(startDate YearMonthDay, endDate YearMonthDay) Duration {
+func CalculateDurationStartTimeToEndTime(startDate YearMonthDay, endDate YearMonthDay) (duration Duration) {
 	start := time.Date(startDate.Year, time.Month(startDate.Month), startDate.Day, 0, 0, 0, 0, time.UTC)
 	end := time.Date(endDate.Year, time.Month(endDate.Month), endDate.Day, 0, 0, 0, 0, time.UTC)
 	diff := end.Sub(start)
-	return Duration{
+	duration = Duration{
 		Seconds: int(diff.Seconds()),
 		Minutes: int(diff.Minutes()),
 		Hours:   int(diff.Hours()),
 	}
+	duration.Days = duration.GetDays()
+	duration.Weeks = duration.GetWeeks()
+	duration.Months = CalculateMonths(startDate, endDate)
+	return duration
 }
 
 func (d Duration) GetDays() int {

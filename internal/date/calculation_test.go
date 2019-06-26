@@ -49,7 +49,7 @@ func Test_GetFullDate_By_Year_1996_Month_2_Day_5_Should_Get_Monday_5_February_19
 	}
 }
 
-func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_16_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_683164800_Seconds_11386080_Minutes_189768_Hours(t *testing.T) {
+func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_16_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_683164800_Seconds(t *testing.T) {
 	startDate := YearMonthDay{
 		Year:  1997,
 		Month: 10,
@@ -60,20 +60,16 @@ func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_St
 		Month: 6,
 		Day:   10,
 	}
-	expectedResult := Duration{
-		Seconds: 683164800,
-		Minutes: 11386080,
-		Hours:   189768,
-	}
+	expectedResult := 683164800
 
-	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
+	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate).Seconds
 
 	if expectedResult != actualResult {
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
 	}
 }
 
-func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_27_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_682214400_Seconds_11370240_Minutes_189504_Hours(t *testing.T) {
+func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_StartDay_27_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_682214400_Seconds(t *testing.T) {
 	startDate := YearMonthDay{
 		Year:  1997,
 		Month: 10,
@@ -84,20 +80,16 @@ func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1997_StartMonth_10_St
 		Month: 6,
 		Day:   10,
 	}
-	expectedResult := Duration{
-		Seconds: 682214400,
-		Minutes: 11370240,
-		Hours:   189504,
-	}
+	expectedResult := 682214400
 
-	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
+	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate).Seconds
 
 	if expectedResult != actualResult {
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
 	}
 }
 
-func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1996_StartMonth_2_StartDay_5_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_736646400_Seconds_12277440_Minutes_204624_Hours(t *testing.T) {
+func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1996_StartMonth_2_StartDay_5_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_736646400_Seconds(t *testing.T) {
 	startDate := YearMonthDay{
 		Year:  1996,
 		Month: 2,
@@ -108,13 +100,9 @@ func Test_CalculateDurationStartTimeToEndTime_By_StartYear_1996_StartMonth_2_Sta
 		Month: 6,
 		Day:   10,
 	}
-	expectedResult := Duration{
-		Seconds: 736646400,
-		Minutes: 12277440,
-		Hours:   204624,
-	}
+	expectedResult := 736646400
 
-	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate)
+	actualResult := CalculateDurationStartTimeToEndTime(startDate, endDate).Seconds
 
 	if expectedResult != actualResult {
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
