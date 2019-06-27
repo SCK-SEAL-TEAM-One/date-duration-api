@@ -23,7 +23,7 @@ type YearMonthDay struct {
 }
 
 func CalculateDuration(w http.ResponseWriter, r *http.Request) {
-	_, err, err1 := getRequestDateFromRequestBody(r)
+	requestDate, err, err1 := getRequestDateFromRequestBody(r)
 	if err != nil {
 		w.WriteHeader(500)
 		fmt.Println(err.Error())
@@ -32,6 +32,7 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(500)
 		fmt.Println(err1.Error())
 	}
+
 
 	duration := date.Duration{
 		Seconds: 683164800,
@@ -46,8 +47,8 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 			TotalMonths: 259,
 			DaysOfMonth: 25,
 		},
-		StartFullDate: "Thursday, 16 October 1997",
-		EndFullDate:   "Monday, 10 June 2019",
+		StartFullDate: date.GetFullDate(requestDate.StartDate.GetTime()),
+		EndFullDate:  date.GetFullDate(requestDate.EndDate.GetTime()),
 	}
 
 	encoder := json.NewEncoder(w)

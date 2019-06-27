@@ -1,5 +1,10 @@
 package date
 
+import (
+	"fmt"
+	"time"
+)
+
 type Weeks struct {
 	TotalWeeks int `json:"total_weeks"`
 	DaysOfWeek int `json:"days_of_week"`
@@ -19,4 +24,8 @@ type Duration struct {
 	EndFullDate   string `json:"end_full_date"`
 	Weeks         Weeks  `json:"weeks"`
 	Months        Months `json:"months"`
+}
+
+func GetFullDate(time time.Time)  string{
+	return fmt.Sprintf("%s, %d %v %d",time.Weekday(),time.Day(),time.Month(),time.Year())
 }
