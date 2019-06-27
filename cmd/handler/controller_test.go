@@ -56,7 +56,7 @@ func Test_CalculateDuration_Between_Mo_Birthday_And_10_June_2019(t *testing.T) {
 	}
 }
 
-func Test_GetTime_By_StartYear_1997_StartMonth_10_StartDay_16_Should_Get_Time(t *testing.T) {
+func Test_GetTime_By_Year_1997_Month_10_Day_16_Should_Get_Time(t *testing.T) {
 	yearmonthday := YearMonthDay{
 		Year:  1997,
 		Month: 10,
@@ -71,7 +71,7 @@ func Test_GetTime_By_StartYear_1997_StartMonth_10_StartDay_16_Should_Get_Time(t 
 	}
 }
 
-func Test_GetTime_By_StartYear_1997_StartMonth_10_StartDay_27_Should_Get_Time(t *testing.T) {
+func Test_GetTime_By_Year_1997_Month_10_Day_27_Should_Get_Time(t *testing.T) {
 	yearmonthday := YearMonthDay{
 		Year:  1997,
 		Month: 10,
@@ -86,7 +86,7 @@ func Test_GetTime_By_StartYear_1997_StartMonth_10_StartDay_27_Should_Get_Time(t 
 	}
 }
 
-func Test_GetTime_By_StartYear_1996_StartMonth_2_StartDay_5_Should_Get_Time(t *testing.T) {
+func Test_GetTime_By_Year_1996_Month_2_Day_5_Should_Get_Time(t *testing.T) {
 	yearmonthday := YearMonthDay{
 		Year:  1996,
 		Month: 2,
@@ -101,7 +101,7 @@ func Test_GetTime_By_StartYear_1996_StartMonth_2_StartDay_5_Should_Get_Time(t *t
 	}
 }
 
-func Test_GetTime_By_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_Time(t *testing.T) {
+func Test_GetTime_By_Year_2019_Month_6_Day_10_Should_Get_Time(t *testing.T) {
 	yearmonthday := YearMonthDay{
 		Year:  2019,
 		Month: 6,
