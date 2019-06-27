@@ -41,3 +41,7 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 	encoder := json.NewEncoder(w)
 	encoder.Encode(duration)
 }
+
+func (yearmonthday YearMonthDay) GetTime() time.Time {
+	return time.Date(yearmonthday.Year, time.Month(yearmonthday.Month), yearmonthday.Day, 0, 0, 0, 0, time.UTC)
+}
