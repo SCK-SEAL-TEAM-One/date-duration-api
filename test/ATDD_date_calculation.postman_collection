@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "62065693-4d92-4b26-842d-24a0de08ff9f",
+		"name": "Calculate duration between birthday and 10 june 2019",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "calculate duration between Mo's birthday and 10 June 2019 ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3a3e88b-ffb6-4860-ade8-75f645f93560",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Days is 7,907 days\", function () {",
+							"    pm.expect(jsonData.days).to.eql(7907);",
+							"});",
+							"",
+							"pm.test(\"Start full date is Thursday, 16 October 1997\", function () {",
+							"    pm.expect(jsonData.start_full_date).to.eql(\"Thursday, 16 October 1997\");",
+							"});",
+							"",
+							"pm.test(\"End full date is Monday, 10 June 2019\", function () {",
+							"    pm.expect(jsonData.end_full_date).to.eql(\"Monday, 10 June 2019\");",
+							"});",
+							"",
+							"pm.test(\"Days to months is 259 months and 25 days\", function () {",
+							"    pm.expect(jsonData.months.total_months).to.eql(259);",
+							"    pm.expect(jsonData.months.days_of_month).to.eql(25);",
+							"});",
+							"",
+							"pm.test(\"Days to weeks is 1,129 weeks and 4 days\", function () {",
+							"    pm.expect(jsonData.weeks.total_weeks).to.eql(1129);",
+							"    pm.expect(jsonData.weeks.days_of_week).to.eql(4);",
+							"});",
+							"",
+							"pm.test(\"Seconds is 683,164,800 seconds\", function () {",
+							"    pm.expect(jsonData.seconds).to.eql(683164800);",
+							"});",
+							"",
+							"pm.test(\"Minutes is 11,386,080 minutes\", function () {",
+							"    pm.expect(jsonData.minutes).to.eql(11386080);",
+							"});",
+							"",
+							"pm.test(\"Hours is 189,768 hours\", function () {",
+							"    pm.expect(jsonData.hours).to.eql(189768);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"start_date\" : {\n\t\t\"day\":16,\n\t\t\"month\":10,\n\t\t\"year\": 1997\n\t\t},\n\t\"end_date\":{\n\t\t\"day\":10,\n\t\t\"month\":6,\n\t\t\"year\": 2019\n\t}\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/date/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"date",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculate duration between Praw's birthday and 10 June 2019",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a31e5c0b-ed5d-4129-a0a5-ebaa75802c8a",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							" ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Days is 7,896 days\", function () {",
+							"    pm.expect(jsonData.days).to.eql(7896);",
+							"});",
+							"",
+							"pm.test(\"Start full date is Monday, 27 October 1997\", function () {",
+							"    pm.expect(jsonData.start_full_date).to.eql(\"Monday, 27 October 1997\");",
+							"});",
+							"",
+							"pm.test(\"End full date is Monday, 10 June 2019\", function () {",
+							"    pm.expect(jsonData.end_full_date).to.eql(\"Monday, 10 June 2019\");",
+							"});",
+							"",
+							"pm.test(\"Days to months is 259 months and 14 days\", function () {",
+							"    pm.expect(jsonData.months.total_months).to.eql(259);",
+							"    pm.expect(jsonData.months.days_of_month).to.eql(14);",
+							"});",
+							"",
+							"pm.test(\"Days to weeks is 1,128 weeks and 0 days\", function () {",
+							"    pm.expect(jsonData.weeks.total_weeks).to.eql(1128);",
+							"    pm.expect(jsonData.weeks.days_of_week).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"Seconds is 682,214,400 seconds\", function () {",
+							"    pm.expect(jsonData.seconds).to.eql(682214400);",
+							"});",
+							"",
+							"pm.test(\"Minutes is 11,370,240 minutes\", function () {",
+							"    pm.expect(jsonData.minutes).to.eql(11370240);",
+							"});",
+							"",
+							"pm.test(\"Hours is 189,504 hours\", function () {",
+							"    pm.expect(jsonData.hours).to.eql(189504);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"start_date\": {\n        \"day\": 27,\n        \"month\": 10,\n        \"year\": 1997\n    },\n    \"end_date\": {\n        \"day\": 10,\n        \"month\": 6,\n        \"year\": 2019\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/date/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"date",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculate duration between Karn's birthday and 10 June 2019",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3a3e88b-ffb6-4860-ade8-75f645f93560",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"    ",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Start full date is Monday, 5 February 1996\", function () {",
+							"    pm.expect(jsonData.start_full_date).to.eql(\"Monday, 5 February 1996\");",
+							"});",
+							"",
+							"pm.test(\"End full date is Monday, 10 June 2019\", function () {",
+							"    pm.expect(jsonData.end_full_date).to.eql(\"Monday, 10 June 2019\");",
+							"});",
+							"",
+							"pm.test(\"Seconds is 736,646,400 seconds\", function () {",
+							"    pm.expect(jsonData.seconds).to.eql(736646400);",
+							"});",
+							"",
+							"pm.test(\"Minutes is 12,277,440 minutes\", function () {",
+							"    pm.expect(jsonData.minutes).to.eql(12277440);",
+							"});",
+							"",
+							"pm.test(\"Hours is 204,624 hours\", function () {",
+							"    pm.expect(jsonData.hours).to.eql(204624);",
+							"});",
+							"",
+							"pm.test(\"Days is 8,526 days\", function () {",
+							"    pm.expect(jsonData.days).to.eql(8526);",
+							"});",
+							"",
+							"pm.test(\"Days to weeks is 1,218 weeks and 0 days\", function () {",
+							"    pm.expect(jsonData.weeks.total_weeks).to.eql(1218);",
+							"    pm.expect(jsonData.weeks.days_of_week).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"Days to months is 280 months and 5 days\", function () {",
+							"    pm.expect(jsonData.months.total_months).to.eql(280);",
+							"    pm.expect(jsonData.months.days_of_week).to.eql(5);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"start_date\" : {\n\t\t\"day\":5,\n\t\t\"month\":2,\n\t\t\"year\": 1996\n\t\t},\n\t\"end_date\":{\n\t\t\"day\":10,\n\t\t\"month\":6,\n\t\t\"year\": 2019\n\t}\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/date/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"date",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
