@@ -66,3 +66,7 @@ func getRequestDateFromRequestBody(request *http.Request) (RequestDate, error, e
 	err2 := decoder.Decode(&requestDate)
 	return requestDate, err, err2
 }
+
+func (yearmonthday YearMonthDay) GetTime() time.Time {
+	return time.Date(yearmonthday.Year, time.Month(yearmonthday.Month), yearmonthday.Day, 0, 0, 0, 0, time.UTC)
+}

@@ -7,6 +7,7 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/SCK-SEAL-TEAM-One/date-duration-api/internal/date"
 )
@@ -50,6 +51,66 @@ func Test_CalculateDuration_Between_Mo_Birthday_And_10_June_2019(t *testing.T) {
 	if expectedCode != actualCode {
 		t.Errorf("Expect code %d but get %d", expectedCode, actualCode)
 	}
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetTime_By_StartYear_1997_StartMonth_10_StartDay_16_Should_Get_Time(t *testing.T) {
+	yearmonthday := YearMonthDay{
+		Year:  1997,
+		Month: 10,
+		Day:   16,
+	}
+	expectedResult := time.Date(1997, 10, 16, 0, 0, 0, 0, time.UTC)
+
+	actualResult := yearmonthday.GetTime()
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetTime_By_StartYear_1997_StartMonth_10_StartDay_27_Should_Get_Time(t *testing.T) {
+	yearmonthday := YearMonthDay{
+		Year:  1997,
+		Month: 10,
+		Day:   27,
+	}
+	expectedResult := time.Date(1997, 10, 27, 0, 0, 0, 0, time.UTC)
+
+	actualResult := yearmonthday.GetTime()
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetTime_By_StartYear_1996_StartMonth_2_StartDay_5_Should_Get_Time(t *testing.T) {
+	yearmonthday := YearMonthDay{
+		Year:  1996,
+		Month: 2,
+		Day:   5,
+	}
+	expectedResult := time.Date(1996, 2, 5, 0, 0, 0, 0, time.UTC)
+
+	actualResult := yearmonthday.GetTime()
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetTime_By_EndYear_2019_EndMonth_6_EndDay_10_Should_Get_Time(t *testing.T) {
+	yearmonthday := YearMonthDay{
+		Year:  2019,
+		Month: 6,
+		Day:   10,
+	}
+	expectedResult := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
+
+	actualResult := yearmonthday.GetTime()
+
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
