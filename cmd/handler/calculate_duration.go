@@ -3,7 +3,6 @@ package handler
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"github.com/SCK-SEAL-TEAM-One/date-duration-api/internal/date"
 	"io/ioutil"
 	"net/http"
@@ -23,14 +22,10 @@ type YearMonthDay struct {
 }
 
 func CalculateDuration(w http.ResponseWriter, r *http.Request) {
-	requestDate, err, err1 := getRequestDateFromRequestBody(r)
+	requestDate, err := getRequestDateFromRequestBody(r)
 	if err != nil {
-		w.WriteHeader(500)
-		fmt.Println(err.Error())
-	}
-	if err1 != nil {
-		w.WriteHeader(500)
-		fmt.Println(err1.Error())
+		http.Error(w,err.Error(),400)
+		return
 	}
 
 	duration := date.Duration{
@@ -50,23 +45,27 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 		EndFullDate:   date.GetFullDate(requestDate.EndDate.Time),
 	}
 
-	encoder := json.NewEncoder(w)
-	err2 := encoder.Encode(duration)
+	err = json.NewEncoder(w).Encode(duration)
+	if err != nil {
+		http.Error(w,err.Error(),500)
+		return
 
-	if err2 != nil {
-		w.WriteHeader(500)
-		fmt.Println(err2.Error())
 	}
 }
 
-func getRequestDateFromRequestBody(request *http.Request) (RequestDate, error, error) {
-	body, err := ioutil.ReadAll(request.Body)
-	decoder := json.NewDecoder(bytes.NewReader(body))
+func getRequestDateFromRequestBody(request *http.Request) (RequestDate, error) {
 	var requestDate RequestDate
-	err2 := decoder.Decode(&requestDate)
+	body, err := ioutil.ReadAll(request.Body)
+	if err != nil{
+		return requestDate,err
+	}
+	err = json.NewDecoder(bytes.NewReader(body)).Decode(&requestDate)
+	if err != nil{
+		return requestDate,err
+	}
 	requestDate.StartDate = NewYearMonthDay(requestDate.StartDate.Year, requestDate.StartDate.Month, requestDate.StartDate.Day)
 	requestDate.EndDate = NewYearMonthDay(requestDate.EndDate.Year, requestDate.EndDate.Month, requestDate.EndDate.Day)
-	return requestDate, err, err2
+	return requestDate, nil
 }
 
 func NewYearMonthDay(year, month, day int) YearMonthDay {
