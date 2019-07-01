@@ -56,60 +56,44 @@ func Test_CalculateDuration_Between_Mo_Birthday_And_10_June_2019(t *testing.T) {
 	}
 }
 
-func Test_GetTime_By_Year_1997_Month_10_Day_16_Should_Get_Time(t *testing.T) {
-	yearmonthday := YearMonthDay{
-		Year:  1997,
-		Month: 10,
-		Day:   16,
-	}
+func Test_NewYearMonthDay_By_Year_1997_Month_10_Day_16_Should_Get_Time(t *testing.T) {
+	yearMonthDay := NewYearMonthDay(1997,10,16)
 	expectedResult := time.Date(1997, 10, 16, 0, 0, 0, 0, time.UTC)
 
-	actualResult := yearmonthday.GetTime()
+	actualResult := yearMonthDay.Time
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
 
-func Test_GetTime_By_Year_1997_Month_10_Day_27_Should_Get_Time(t *testing.T) {
-	yearmonthday := YearMonthDay{
-		Year:  1997,
-		Month: 10,
-		Day:   27,
-	}
+func Test_NewYearMonthDay_By_Year_1997_Month_10_Day_27_Should_Get_Time(t *testing.T) {
+	yearMonthDay := NewYearMonthDay(1997,10,27)
 	expectedResult := time.Date(1997, 10, 27, 0, 0, 0, 0, time.UTC)
 
-	actualResult := yearmonthday.GetTime()
+	actualResult := yearMonthDay.Time
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
 
-func Test_GetTime_By_Year_1996_Month_2_Day_5_Should_Get_Time(t *testing.T) {
-	yearmonthday := YearMonthDay{
-		Year:  1996,
-		Month: 2,
-		Day:   5,
-	}
+func Test_NewYearMonthDay_By_Year_1996_Month_2_Day_5_Should_Get_Time(t *testing.T) {
+	yearMonthDay := NewYearMonthDay(1996,2,5)
 	expectedResult := time.Date(1996, 2, 5, 0, 0, 0, 0, time.UTC)
 
-	actualResult := yearmonthday.GetTime()
+	actualResult := yearMonthDay.Time
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
 
-func Test_GetTime_By_Year_2019_Month_6_Day_10_Should_Get_Time(t *testing.T) {
-	yearmonthday := YearMonthDay{
-		Year:  2019,
-		Month: 6,
-		Day:   10,
-	}
+func Test_NewYearMonthDay_By_Year_2019_Month_6_Day_10_Should_Get_Time(t *testing.T) {
+	yearMonthDay := NewYearMonthDay(2019,6,10)
 	expectedResult := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
-	actualResult := yearmonthday.GetTime()
+	actualResult := yearMonthDay.Time
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)

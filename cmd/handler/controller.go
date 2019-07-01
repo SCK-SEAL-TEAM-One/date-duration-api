@@ -33,7 +33,6 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err1.Error())
 	}
 
-
 	duration := date.Duration{
 		Seconds: 683164800,
 		Minutes: 11386080,
@@ -47,8 +46,8 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 			TotalMonths: 259,
 			DaysOfMonth: 25,
 		},
-		StartFullDate: date.GetFullDate(requestDate.StartDate.GetTime()),
-		EndFullDate:  date.GetFullDate(requestDate.EndDate.GetTime()),
+		StartFullDate: date.GetFullDate(requestDate.StartDate.Time),
+		EndFullDate:   date.GetFullDate(requestDate.EndDate.Time),
 	}
 
 	encoder := json.NewEncoder(w)
@@ -65,9 +64,16 @@ func getRequestDateFromRequestBody(request *http.Request) (RequestDate, error, e
 	decoder := json.NewDecoder(bytes.NewReader(body))
 	var requestDate RequestDate
 	err2 := decoder.Decode(&requestDate)
+	requestDate.StartDate = NewYearMonthDay(requestDate.StartDate.Year, requestDate.StartDate.Month, requestDate.StartDate.Day)
+	requestDate.EndDate = NewYearMonthDay(requestDate.EndDate.Year, requestDate.EndDate.Month, requestDate.EndDate.Day)
 	return requestDate, err, err2
 }
 
-func (yearmonthday YearMonthDay) GetTime() time.Time {
-	return time.Date(yearmonthday.Year, time.Month(yearmonthday.Month), yearmonthday.Day, 0, 0, 0, 0, time.UTC)
+func NewYearMonthDay(year, month, day int) YearMonthDay {
+	return YearMonthDay{
+		Year:  year,
+		Month: month,
+		Day:   day,
+		Time:  time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC),
+	}
 }
