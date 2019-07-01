@@ -37,17 +37,16 @@ func Test_CalculateDuration_Between_Mo_Birthday_And_10_June_2019(t *testing.T) {
 	CalculateDuration(recorder, request)
 	response := recorder.Result()
 	body, err := ioutil.ReadAll(response.Body)
+	if err != nil{
+		t.Errorf("Found error %v",err.Error())
+	}
 	actualCode := response.StatusCode
 	var actualResult date.Duration
-	decoder := json.NewDecoder(bytes.NewReader(body))
-	err1 := decoder.Decode(&actualResult)
+	err = json.NewDecoder(bytes.NewReader(body)).Decode(&actualResult)
+	if err != nil{
+		t.Errorf("Found error %v",err.Error())
+	}
 
-	if err != nil {
-		t.Errorf("%v", err.Error())
-	}
-	if err1 != nil {
-		t.Errorf("%v", err.Error())
-	}
 	if expectedCode != actualCode {
 		t.Errorf("Expect code %d but get %d", expectedCode, actualCode)
 	}
