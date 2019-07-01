@@ -38,3 +38,17 @@ func (duration *Duration)GetWeeks()  {
 	duration.Weeks.TotalWeeks = duration.Days/7
 	duration.Weeks.DaysOfWeek = duration.Days%7
 }
+
+func GetMonths(startTime,endTime time.Time) Months {
+	diffYear := endTime.Year()-startTime.Year()
+	diffMonth := int(endTime.Month()-startTime.Month())+(diffYear*12)
+	diffDay := endTime.Day()-startTime.Day()
+	if diffDay<0 {
+		diffMonth--
+		diffDay+=31
+	}
+	return Months{
+		TotalMonths:diffMonth,
+		DaysOfMonth:diffDay,
+	}
+}

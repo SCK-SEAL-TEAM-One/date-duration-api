@@ -141,3 +141,48 @@ func Test_GetWeeks_By_Days_8526_Should_TotalWeeks_1218_DaysOfWeek_0(t *testing.T
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_GetMonths_By_StartYear_1997_StartMonth_10_StartDay_16_Should_TotalMonths_259_DaysOfMonth_25(t *testing.T)  {
+	expectedResult := Months{
+		TotalMonths:259,
+		DaysOfMonth:25,
+	}
+	StartTime := time.Date(1997,10,16,0,0,0,0,time.UTC)
+	EndTime := time.Date(2019,6,10,0,0,0,0,time.UTC)
+
+	actualResult := GetMonths(StartTime,EndTime)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetMonths_By_StartYear_1997_StartMonth_10_StartDay_27_Should_TotalMonths_259_DaysOfMonth_14(t *testing.T)  {
+	expectedResult := Months{
+		TotalMonths:259,
+		DaysOfMonth:14,
+	}
+	StartTime := time.Date(1997,10,27,0,0,0,0,time.UTC)
+	EndTime := time.Date(2019,6,10,0,0,0,0,time.UTC)
+
+	actualResult := GetMonths(StartTime,EndTime)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetMonths_By_StartYear_1996_StartMonth_2_StartDay_5_Should_TotalMonths_280_DaysOfMonth_5(t *testing.T)  {
+	expectedResult := Months{
+		TotalMonths:280,
+		DaysOfMonth:5,
+	}
+	StartTime := time.Date(1996,2,5,0,0,0,0,time.UTC)
+	EndTime := time.Date(2019,6,10,0,0,0,0,time.UTC)
+
+	actualResult := GetMonths(StartTime,EndTime)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
