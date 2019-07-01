@@ -26,29 +26,42 @@ type Duration struct {
 	Months        Months `json:"months"`
 }
 
-func GetFullDate(time time.Time)  string{
-	return fmt.Sprintf("%s, %d %v %d",time.Weekday(),time.Day(),time.Month(),time.Year())
+func GetFullDate(time time.Time) string {
+	return fmt.Sprintf("%s, %d %v %d", time.Weekday(), time.Day(), time.Month(), time.Year())
 }
 
-func (duration *Duration)GetDays(){
-	duration.Days = duration.Hours/24
+func (duration *Duration) GetDays() {
+	duration.Days = duration.Hours / 24
 }
 
-func (duration *Duration)GetWeeks()  {
-	duration.Weeks.TotalWeeks = duration.Days/7
-	duration.Weeks.DaysOfWeek = duration.Days%7
+func (duration *Duration) GetWeeks() {
+	duration.Weeks.TotalWeeks = duration.Days / 7
+	duration.Weeks.DaysOfWeek = duration.Days % 7
 }
 
-func GetMonths(startTime,endTime time.Time) Months {
-	diffYear := endTime.Year()-startTime.Year()
-	diffMonth := int(endTime.Month()-startTime.Month())+(diffYear*12)
-	diffDay := endTime.Day()-startTime.Day()
-	if diffDay<0 {
+func GetMonths(startTime, endTime time.Time) Months {
+	diffYear := endTime.Year() - startTime.Year()
+	diffMonth := int(endTime.Month()-startTime.Month()) + (diffYear * 12)
+	diffDay := endTime.Day() - startTime.Day()
+	if diffDay < 0 {
 		diffMonth--
-		diffDay+=31
+		diffDay += 31
 	}
 	return Months{
-		TotalMonths:diffMonth,
-		DaysOfMonth:diffDay,
+		TotalMonths: diffMonth,
+		DaysOfMonth: diffDay,
 	}
+}
+
+func CalculateDuration(startTime, endTime time.Time) Duration {
+	diffTime := endTime.Sub(startTime)
+	duration := Duration{
+		Seconds: int(diffTime.Seconds()),
+		Minutes: int(diffTime.Minutes()),
+		Hours:   int(diffTime.Hours()),
+	}
+	duration.GetDays()
+	duration.GetWeeks()
+	duration.Months = GetMonths(startTime, endTime)
+	return duration
 }
