@@ -51,12 +51,12 @@ func getRequestDateFromRequestBody(request *http.Request) (RequestDate, error) {
 	if err != nil{
 		return requestDate,err
 	}
-	requestDate.StartDate = NewYearMonthDay(requestDate.StartDate.Year, requestDate.StartDate.Month, requestDate.StartDate.Day)
-	requestDate.EndDate = NewYearMonthDay(requestDate.EndDate.Year, requestDate.EndDate.Month, requestDate.EndDate.Day)
+	requestDate.StartDate = newYearMonthDay(requestDate.StartDate.Year, requestDate.StartDate.Month, requestDate.StartDate.Day)
+	requestDate.EndDate = newYearMonthDay(requestDate.EndDate.Year, requestDate.EndDate.Month, requestDate.EndDate.Day)
 	return requestDate, nil
 }
 
-func NewYearMonthDay(year, month, day int) YearMonthDay {
+func newYearMonthDay(year, month, day int) YearMonthDay {
 	return YearMonthDay{
 		Year:  year,
 		Month: month,

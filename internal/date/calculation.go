@@ -37,16 +37,16 @@ func GetFullDate(time time.Time) string {
 	return fmt.Sprintf("%s, %d %v %d", time.Weekday(), time.Day(), time.Month(), time.Year())
 }
 
-func (duration *Duration) GetDays() {
+func (duration *Duration) getDays() {
 	duration.Days = duration.Hours / hoursOfDay
 }
 
-func (duration *Duration) GetWeeks() {
+func (duration *Duration) getWeeks() {
 	duration.Weeks.TotalWeeks = duration.Days / daysOfWeek
 	duration.Weeks.DaysOfWeek = duration.Days % daysOfWeek
 }
 
-func GetMonths(startTime, endTime time.Time) Months {
+func getMonths(startTime, endTime time.Time) Months {
 	diffYear := endTime.Year() - startTime.Year()
 	diffMonth := int(endTime.Month()-startTime.Month()) + (diffYear * monthsOfYear)
 	diffDay := endTime.Day() - startTime.Day()
@@ -67,8 +67,8 @@ func CalculateDuration(startTime, endTime time.Time) Duration {
 		Minutes: int(diffTime.Minutes()),
 		Hours:   int(diffTime.Hours()),
 	}
-	duration.GetDays()
-	duration.GetWeeks()
-	duration.Months = GetMonths(startTime, endTime)
+	duration.getDays()
+	duration.getWeeks()
+	duration.Months = getMonths(startTime, endTime)
 	return duration
 }

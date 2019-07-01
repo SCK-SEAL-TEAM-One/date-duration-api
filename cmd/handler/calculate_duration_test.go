@@ -56,7 +56,7 @@ func Test_CalculateDuration_Between_Mo_Birthday_And_10_June_2019(t *testing.T) {
 }
 
 func Test_NewYearMonthDay_By_Year_1997_Month_10_Day_16_Should_Get_Time(t *testing.T) {
-	yearMonthDay := NewYearMonthDay(1997,10,16)
+	yearMonthDay := newYearMonthDay(1997,10,16)
 	expectedResult := time.Date(1997, 10, 16, 0, 0, 0, 0, time.UTC)
 
 	actualResult := yearMonthDay.Time
@@ -67,7 +67,7 @@ func Test_NewYearMonthDay_By_Year_1997_Month_10_Day_16_Should_Get_Time(t *testin
 }
 
 func Test_NewYearMonthDay_By_Year_1997_Month_10_Day_27_Should_Get_Time(t *testing.T) {
-	yearMonthDay := NewYearMonthDay(1997,10,27)
+	yearMonthDay := newYearMonthDay(1997,10,27)
 	expectedResult := time.Date(1997, 10, 27, 0, 0, 0, 0, time.UTC)
 
 	actualResult := yearMonthDay.Time
@@ -78,7 +78,7 @@ func Test_NewYearMonthDay_By_Year_1997_Month_10_Day_27_Should_Get_Time(t *testin
 }
 
 func Test_NewYearMonthDay_By_Year_1996_Month_2_Day_5_Should_Get_Time(t *testing.T) {
-	yearMonthDay := NewYearMonthDay(1996,2,5)
+	yearMonthDay := newYearMonthDay(1996,2,5)
 	expectedResult := time.Date(1996, 2, 5, 0, 0, 0, 0, time.UTC)
 
 	actualResult := yearMonthDay.Time
@@ -89,7 +89,7 @@ func Test_NewYearMonthDay_By_Year_1996_Month_2_Day_5_Should_Get_Time(t *testing.
 }
 
 func Test_NewYearMonthDay_By_Year_2019_Month_6_Day_10_Should_Get_Time(t *testing.T) {
-	yearMonthDay := NewYearMonthDay(2019,6,10)
+	yearMonthDay := newYearMonthDay(2019,6,10)
 	expectedResult := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
 	actualResult := yearMonthDay.Time

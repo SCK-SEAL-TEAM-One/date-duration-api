@@ -55,7 +55,7 @@ func Test_GetDays_By_hours_189768_Should_Get_Days_7907(t *testing.T) {
 		Hours: 189768,
 	}
 
-	duration.GetDays()
+	duration.getDays()
 	actualResult := duration.Days
 
 	if expectedResult != actualResult {
@@ -69,7 +69,7 @@ func Test_GetDays_By_hours_189504_Should_Get_Days_7896(t *testing.T) {
 		Hours: 189504,
 	}
 
-	duration.GetDays()
+	duration.getDays()
 	actualResult := duration.Days
 
 	if expectedResult != actualResult {
@@ -83,7 +83,7 @@ func Test_GetDays_By_hours_204624_Should_Get_Days_8526(t *testing.T) {
 		Hours: 204624,
 	}
 
-	duration.GetDays()
+	duration.getDays()
 	actualResult := duration.Days
 
 	if expectedResult != actualResult {
@@ -100,7 +100,7 @@ func Test_GetWeeks_By_Days_7907_Should_Get_TotalWeeks_1129_DaysOfWeek_4(t *testi
 		Days: 7907,
 	}
 
-	duration.GetWeeks()
+	duration.getWeeks()
 	actualResult := duration.Weeks
 
 	if expectedResult != actualResult {
@@ -117,7 +117,7 @@ func Test_GetWeeks_By_Days_7896_Should_Get_TotalWeeks_1128_DaysOfWeek_0(t *testi
 		Days: 7896,
 	}
 
-	duration.GetWeeks()
+	duration.getWeeks()
 	actualResult := duration.Weeks
 
 	if expectedResult != actualResult {
@@ -134,7 +134,7 @@ func Test_GetWeeks_By_Days_8526_Should_Get_TotalWeeks_1218_DaysOfWeek_0(t *testi
 		Days: 8526,
 	}
 
-	duration.GetWeeks()
+	duration.getWeeks()
 	actualResult := duration.Weeks
 
 	if expectedResult != actualResult {
@@ -150,7 +150,7 @@ func Test_GetMonths_By_StartYear_1997_StartMonth_10_StartDay_16_Should_Get_Total
 	StartTime := time.Date(1997, 10, 16, 0, 0, 0, 0, time.UTC)
 	EndTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
-	actualResult := GetMonths(StartTime, EndTime)
+	actualResult := getMonths(StartTime, EndTime)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
@@ -165,7 +165,7 @@ func Test_GetMonths_By_StartYear_1997_StartMonth_10_StartDay_27_Should_Get_Total
 	StartTime := time.Date(1997, 10, 27, 0, 0, 0, 0, time.UTC)
 	EndTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
-	actualResult := GetMonths(StartTime, EndTime)
+	actualResult := getMonths(StartTime, EndTime)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
@@ -180,7 +180,7 @@ func Test_GetMonths_By_StartYear_1996_StartMonth_2_StartDay_5_Should_Get_TotalMo
 	StartTime := time.Date(1996, 2, 5, 0, 0, 0, 0, time.UTC)
 	EndTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
-	actualResult := GetMonths(StartTime, EndTime)
+	actualResult := getMonths(StartTime, EndTime)
 
 	if expectedResult != actualResult {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
