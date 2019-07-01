@@ -29,3 +29,7 @@ type Duration struct {
 func GetFullDate(time time.Time)  string{
 	return fmt.Sprintf("%s, %d %v %d",time.Weekday(),time.Day(),time.Month(),time.Year())
 }
+
+func (duration *Duration)GetDays(){
+	duration.Days = duration.Hours/24
+}
