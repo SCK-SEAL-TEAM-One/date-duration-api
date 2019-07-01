@@ -6,10 +6,10 @@ import (
 )
 
 const (
-	hoursOfDay = 24
-	daysOfWeek = 7
+	hoursOfDay   = 24
+	daysOfWeek   = 7
 	monthsOfYear = 12
-	daysOfMonth = 31
+	daysOfMonth  = 31
 )
 
 type Weeks struct {
