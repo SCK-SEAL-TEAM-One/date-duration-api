@@ -27,29 +27,17 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 		http.Error(w,err.Error(),400)
 		return
 	}
+	startTime := requestDate.StartDate.Time
+	endTime := requestDate.EndDate.Time
 
-	duration := date.Duration{
-		Seconds: 683164800,
-		Minutes: 11386080,
-		Hours:   189768,
-		Days:    7907,
-		Weeks: date.Weeks{
-			TotalWeeks: 1129,
-			DaysOfWeek: 4,
-		},
-		Months: date.Months{
-			TotalMonths: 259,
-			DaysOfMonth: 25,
-		},
-		StartFullDate: date.GetFullDate(requestDate.StartDate.Time),
-		EndFullDate:   date.GetFullDate(requestDate.EndDate.Time),
-	}
+	duration := date.CalculateDuration(startTime,endTime)
+	duration.StartFullDate = date.GetFullDate(startTime)
+	duration.EndFullDate = date.GetFullDate(endTime)
 
 	err = json.NewEncoder(w).Encode(duration)
 	if err != nil {
 		http.Error(w,err.Error(),500)
 		return
-
 	}
 }
 

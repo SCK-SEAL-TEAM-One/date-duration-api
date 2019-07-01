@@ -219,7 +219,7 @@
 							"",
 							"pm.test(\"Days to months is 280 months and 5 days\", function () {",
 							"    pm.expect(jsonData.months.total_months).to.eql(280);",
-							"    pm.expect(jsonData.months.days_of_week).to.eql(5);",
+							"    pm.expect(jsonData.months.days_of_month).to.eql(5);",
 							"});"
 						],
 						"type": "text/javascript"
