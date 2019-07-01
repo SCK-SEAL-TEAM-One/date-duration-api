@@ -90,3 +90,54 @@ func Test_GetDays_By_hours_204624_Should_Days_8526(t *testing.T) {
 		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
 	}
 }
+
+func Test_GetWeeks_By_Days_7907_Should_TotalWeeks_1129_DaysOfWeek_4(t *testing.T)  {
+	expectedResult := Weeks{
+		TotalWeeks:1129,
+		DaysOfWeek:4,
+	}
+	duration := Duration{
+		Days:7907,
+	}
+
+	duration.GetWeeks()
+	actualResult := duration.Weeks
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetWeeks_By_Days_7896_Should_TotalWeeks_1128_DaysOfWeek_0(t *testing.T)  {
+	expectedResult := Weeks{
+		TotalWeeks:1128,
+		DaysOfWeek:0,
+	}
+	duration := Duration{
+		Days:7896,
+	}
+
+	duration.GetWeeks()
+	actualResult := duration.Weeks
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetWeeks_By_Days_8526_Should_TotalWeeks_1218_DaysOfWeek_0(t *testing.T)  {
+	expectedResult := Weeks{
+		TotalWeeks:1218,
+		DaysOfWeek:0,
+	}
+	duration := Duration{
+		Days:8526,
+	}
+
+	duration.GetWeeks()
+	actualResult := duration.Weeks
+
+	if expectedResult != actualResult {
+		t.Errorf("Expect %v but get %v", expectedResult, actualResult)
+	}
+}

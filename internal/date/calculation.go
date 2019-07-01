@@ -33,3 +33,8 @@ func GetFullDate(time time.Time)  string{
 func (duration *Duration)GetDays(){
 	duration.Days = duration.Hours/24
 }
+
+func (duration *Duration)GetWeeks()  {
+	duration.Weeks.TotalWeeks = duration.Days/7
+	duration.Weeks.DaysOfWeek = duration.Days%7
+}
