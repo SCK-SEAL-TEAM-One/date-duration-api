@@ -5,6 +5,36 @@ import (
 	"time"
 )
 
+func Test_GetDays_By_189768_Hour_Should_Get_7907_Day(t *testing.T) {
+	expectedResult := 7907
+
+	actualResult := getDays(189768)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetDays_By_189504_Hour_Should_Get_7896_Day(t *testing.T) {
+	expectedResult := 7896
+
+	actualResult := getDays(189504)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetDays_By_204624_Hour_Should_Get_8526_Day(t *testing.T) {
+	expectedResult := 8526
+
+	actualResult := getDays(204624)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
 func Test_GetWeek_By_7907_Day_Should_Get_1129_TotalWeeks_And_4_DayOfWeek(t *testing.T) {
 	expectedResult := Weeks{1129, 4}
 

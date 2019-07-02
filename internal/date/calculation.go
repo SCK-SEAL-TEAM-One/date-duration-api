@@ -6,6 +6,7 @@ import (
 )
 
 const (
+	hoursOfDay   = 24
 	daysOfWeek   = 7
 	daysOfMonth  = 31
 	monthsOfYear = 12
@@ -30,6 +31,11 @@ type Weeks struct {
 type Months struct {
 	TotalMonths int `json:"total_months"`
 	DaysOfMonth int `json:"days_of_month"`
+}
+
+func getDays(hour int) int {
+	days := hour / hoursOfDay
+	return days
 }
 
 func getWeeks(day int) Weeks {
