@@ -2,12 +2,19 @@ package main
 
 import (
 	"date-duration-api/cmd/handler"
+	"flag"
+	"fmt"
 	"log"
 	"net/http"
 )
 
-func main()  {
-	http.HandleFunc("/date/calculate",handler.CalculateDuration)
-	log.Fatal(http.ListenAndServe(":8080",nil))
-	
+const defaultHttpPort = 8080
+
+func main() {
+	httpPrt := flag.Int("http", defaultHttpPort, "")
+	flag.Parse()
+	addr := fmt.Sprintf(":%d", *httpPrt)
+
+	http.HandleFunc("/date/calculate", handler.CalculateDuration)
+	log.Fatal(http.ListenAndServe(addr, nil))
 }
