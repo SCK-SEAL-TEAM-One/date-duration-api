@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 type Dates struct {
@@ -54,4 +55,8 @@ func decodeDate(request *http.Request) (Dates, error) {
 		return dates,err
 	}
 	return dates, nil
+}
+
+func (yearMonthDay YearMonthDay)getTime() time.Time {
+	return time.Date(yearMonthDay.Year,time.Month(yearMonthDay.Month),yearMonthDay.Day,0,0,0,0,time.UTC)
 }
