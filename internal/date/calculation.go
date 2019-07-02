@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+const (
+	daysOfWeek   = 7
+	daysOfMonth  = 31
+	monthsOfYear = 12
+)
+
 type Duration struct {
 	Seconds       int    `json:"seconds"`
 	Minutes       int    `json:"minutes"`
@@ -26,11 +32,22 @@ type Months struct {
 	DaysOfMonth int `json:"days_of_month"`
 }
 
-func GetWeeks(day int) Weeks {
+func getWeeks(day int) Weeks {
 	return Weeks{
-		TotalWeeks: day / 7,
-		DaysOfWeek: day % 7,
+		TotalWeeks: day / daysOfWeek,
+		DaysOfWeek: day % daysOfWeek,
 	}
+}
+
+func getMonths(startTime, endTime time.Time) Months {
+	diffYears := endTime.Year() - startTime.Year()
+	diffMonths := int(endTime.Month()-startTime.Month()) + (diffYears * monthsOfYear)
+	diffDays := endTime.Day() - startTime.Day()
+	if diffDays < 0 {
+		diffDays += daysOfMonth
+		diffMonths--
+	}
+	return Months{TotalMonths: diffMonths, DaysOfMonth: diffDays}
 }
 
 func getFullDate(date time.Time) string {
