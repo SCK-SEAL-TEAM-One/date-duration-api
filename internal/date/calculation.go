@@ -23,20 +23,20 @@ type Months struct {
 	DaysOfMonth int `json:"days_of_month"`
 }
 
-func GetWeeks(day int) Weeks {
+func getWeeks(day int) Weeks {
 	return Weeks{
 		TotalWeeks: day / 7,
 		DaysOfWeek: day % 7,
 	}
 }
 
-func getMonths(startTime,endTime time.Time) Months {
+func getMonths(startTime, endTime time.Time) Months {
 	diffYears := endTime.Year() - startTime.Year()
-	diffMonths := int(endTime.Month() - startTime.Month()) + (diffYears * 12)
+	diffMonths := int(endTime.Month()-startTime.Month()) + (diffYears * 12)
 	diffDays := endTime.Day() - startTime.Day()
 	if diffDays < 0 {
-		diffDays+=31
+		diffDays += 31
 		diffMonths--
 	}
-	return Months{TotalMonths:diffMonths,DaysOfMonth:diffDays}
+	return Months{TotalMonths: diffMonths, DaysOfMonth: diffDays}
 }
