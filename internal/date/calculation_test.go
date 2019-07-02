@@ -101,6 +101,30 @@ func Test_GetMonths_By_StartTime_Year_1996_Month_2_Day_5_And_EndTime_Year_2019_M
 	}
 }
 
+func Test_GetMonths_By_StartTime_Year_2019_Month_5_Day_10_And_EndTime_Year_2019_Month_6_Day_10_Should_Get_1_Months_And_0_Days(t *testing.T) {
+	expectedResult := Months{1, 0}
+	startTime := time.Date(2019, 5, 10, 0, 0, 0, 0, time.UTC)
+	endTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
+
+	actualResult := getMonths(startTime, endTime)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func Test_GetMonths_By_StartTime_Year_2019_Month_2_Day_10_And_EndTime_Year_2019_Month_3_Day_10_Should_Get_1_Months_And_0_Days(t *testing.T) {
+	expectedResult := Months{1, 0}
+	startTime := time.Date(2019, 2, 10, 0, 0, 0, 0, time.UTC)
+	endTime := time.Date(2019, 3, 10, 0, 0, 0, 0, time.UTC)
+
+	actualResult := getMonths(startTime, endTime)
+
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
 func Test_GetFullDate_By_Year_1997_Month_10_Day_16_Should_Get_Thursday_16_October_1997(t *testing.T) {
 	date := time.Date(1997, 10, 16, 0, 0, 0, 0, time.UTC)
 	expectedResult := "Thursday, 16 October 1997"
