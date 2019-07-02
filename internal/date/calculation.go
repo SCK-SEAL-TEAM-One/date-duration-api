@@ -1,5 +1,7 @@
 package date
 
+import "time"
+
 type Duration struct {
 	Seconds       int    `json:"seconds"`
 	Minutes       int    `json:"minutes"`
@@ -26,4 +28,15 @@ func GetWeeks(day int) Weeks {
 		TotalWeeks: day / 7,
 		DaysOfWeek: day % 7,
 	}
+}
+
+func getMonths(startTime,endTime time.Time) Months {
+	diffYears := endTime.Year() - startTime.Year()
+	diffMonths := int(endTime.Month() - startTime.Month()) + (diffYears * 12)
+	diffDays := endTime.Day() - startTime.Day()
+	if diffDays < 0 {
+		diffDays+=31
+		diffMonths--
+	}
+	return Months{TotalMonths:diffMonths,DaysOfMonth:diffDays}
 }
