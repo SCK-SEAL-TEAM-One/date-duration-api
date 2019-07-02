@@ -46,6 +46,10 @@ Example : `"ADD : สร้างไฟล์ README.md และใส่ข้
     }
 
 ## วิธีการใช้งาน API
+เริ่มต้น Start main
+
+    $ go build cmd/main/main.go
+    $ ./main.exe -http=8080
 
 URL : https://localhost:8080/date/calculate
 Method : POST
