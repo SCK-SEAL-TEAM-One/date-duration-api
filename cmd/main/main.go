@@ -8,10 +8,10 @@ import (
 	"net/http"
 )
 
-const httpPort = 8080
+const defaultHttpPort = 8080
 
 func main() {
-	httpPrt := flag.Int("http", httpPort, "")
+	httpPrt := flag.Int("http", defaultHttpPort, "")
 	flag.Parse()
 	addr := fmt.Sprintf(":%d", *httpPrt)
 
