@@ -11,7 +11,7 @@ import (
 	"testing"
 )
 
-func CalculateDuration_Between_Mo_Birthday_And_10_June_2019(t *testing.T)  {
+func Test_CalculateDuration_Between_Mo_Birthday_And_10_June_2019(t *testing.T)  {
 	expectedResult := date.Duration{
 		Seconds:683164800,
 		Minutes :11386080,

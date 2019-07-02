@@ -21,24 +21,14 @@ type YearMonthDay struct {
 }
 
 func CalculateDuration(w http.ResponseWriter, r *http.Request) {
-	duration := date.Duration{
-		Seconds: 683164800,
-		Minutes: 11386080,
-		Hours:   189768,
-		Days:    7907,
-		Weeks: date.Weeks{
-			TotalWeeks: 1129,
-			DaysOfWeek: 4,
-		},
-		Months: date.Months{
-			TotalMonths: 259,
-			DaysOfMonth: 25,
-		},
-		StartFullDate: "Thursday, 16 October 1997",
-		EndFullDate:   "Monday, 10 June 2019",
+	dates, err := decodeDate(r)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
-	err := json.NewEncoder(w).Encode(&duration)
+	startTime := dates.StartDate.getTime()
+	endTime := dates.EndDate.getTime()
+	duration := date.DurationBetween(startTime, endTime)
+	err = json.NewEncoder(w).Encode(&duration)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -46,17 +36,17 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 
 func decodeDate(request *http.Request) (Dates, error) {
 	var dates Dates
-	body,err := ioutil.ReadAll(request.Body)
-	if err != nil{
-		return dates,err
+	body, err := ioutil.ReadAll(request.Body)
+	if err != nil {
+		return dates, err
 	}
 	err = json.NewDecoder(bytes.NewReader(body)).Decode(&dates)
-	if err != nil{
-		return dates,err
+	if err != nil {
+		return dates, err
 	}
 	return dates, nil
 }
 
-func (yearMonthDay YearMonthDay)getTime() time.Time {
-	return time.Date(yearMonthDay.Year,time.Month(yearMonthDay.Month),yearMonthDay.Day,0,0,0,0,time.UTC)
+func (yearMonthDay YearMonthDay) getTime() time.Time {
+	return time.Date(yearMonthDay.Year, time.Month(yearMonthDay.Month), yearMonthDay.Day, 0, 0, 0, 0, time.UTC)
 }
