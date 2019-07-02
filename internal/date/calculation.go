@@ -8,7 +8,7 @@ type Duration struct {
 	Weeks         Weeks  `json:"weeks"`
 	Months        Months `json:"months"`
 	StartFullDate string `json:"start_full_date"`
-	EndFullDate   string `json:"end_full_date`
+	EndFullDate   string `json:"end_full_date"`
 }
 
 type Weeks struct {
@@ -18,5 +18,5 @@ type Weeks struct {
 
 type Months struct {
 	TotalMonths int `json:"total_months"`
-	DaysOfMonth int `json:"days_of_month`
+	DaysOfMonth int `json:"days_of_month"`
 }
