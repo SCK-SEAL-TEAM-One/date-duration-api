@@ -30,7 +30,7 @@ type YearMonthDay struct {
 func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 	dates, err := decodeDate(r)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
 	startTime := dates.StartDate.getTime()
 	endTime := dates.EndDate.getTime()
