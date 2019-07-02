@@ -9,6 +9,13 @@ import (
 	"time"
 )
 
+const (
+	nanoSecStartOfDay = 0
+	secStartOfDay     = 0
+	minStartOfDay     = 0
+	hoursStartOfDay   = 0
+)
+
 type Dates struct {
 	StartDate YearMonthDay `json:"start_date"`
 	EndDate   YearMonthDay `json:"end_date"`
@@ -48,5 +55,5 @@ func decodeDate(request *http.Request) (Dates, error) {
 }
 
 func (yearMonthDay YearMonthDay) getTime() time.Time {
-	return time.Date(yearMonthDay.Year, time.Month(yearMonthDay.Month), yearMonthDay.Day, 0, 0, 0, 0, time.UTC)
+	return time.Date(yearMonthDay.Year, time.Month(yearMonthDay.Month), yearMonthDay.Day, hoursStartOfDay, minStartOfDay, secStartOfDay, nanoSecStartOfDay, time.UTC)
 }
