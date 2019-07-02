@@ -36,7 +36,7 @@ func Test_GetDays_By_204624_Hour_Should_Get_8526_Day(t *testing.T) {
 }
 
 func Test_GetWeek_By_7907_Day_Should_Get_1129_TotalWeeks_And_4_DayOfWeek(t *testing.T) {
-	expectedResult := Weeks{1129, 4}
+	expectedResult := Weeks{TotalWeeks: 1129, DaysOfWeek: 4}
 
 	actualResult := getWeeks(7907)
 
@@ -46,7 +46,7 @@ func Test_GetWeek_By_7907_Day_Should_Get_1129_TotalWeeks_And_4_DayOfWeek(t *test
 }
 
 func Test_GetWeek_By_7896_Day_Should_Get_1128_TotalWeeks_And_0_DayOfWeek(t *testing.T) {
-	expectedResult := Weeks{1128, 0}
+	expectedResult := Weeks{TotalWeeks: 1128, DaysOfWeek: 0}
 
 	actualResult := getWeeks(7896)
 
@@ -56,7 +56,7 @@ func Test_GetWeek_By_7896_Day_Should_Get_1128_TotalWeeks_And_0_DayOfWeek(t *test
 }
 
 func Test_GetWeek_By_8526_Day_Should_Get_1218_TotalWeeks_And_0_DayOfWeek(t *testing.T) {
-	expectedResult := Weeks{1218, 0}
+	expectedResult := Weeks{TotalWeeks: 1218, DaysOfWeek: 0}
 
 	actualResult := getWeeks(8526)
 
@@ -66,7 +66,7 @@ func Test_GetWeek_By_8526_Day_Should_Get_1218_TotalWeeks_And_0_DayOfWeek(t *test
 }
 
 func Test_GetMonths_By_StartTime_Year_1997_Month_10_Day_16_And_EndTime_Year_2019_Month_6_Day_10_Should_Get_259_Months_And_25_Days(t *testing.T) {
-	expectedResult := Months{259, 25}
+	expectedResult := Months{TotalMonths: 259, DaysOfMonth: 25}
 	startTime := time.Date(1997, 10, 16, 0, 0, 0, 0, time.UTC)
 	endTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
@@ -78,7 +78,7 @@ func Test_GetMonths_By_StartTime_Year_1997_Month_10_Day_16_And_EndTime_Year_2019
 }
 
 func Test_GetMonths_By_StartTime_Year_1997_Month_10_Day_27_And_EndTime_Year_2019_Month_6_Day_10_Should_Get_259_Months_And_14_Days(t *testing.T) {
-	expectedResult := Months{259, 14}
+	expectedResult := Months{TotalMonths: 259, DaysOfMonth: 14}
 	startTime := time.Date(1997, 10, 27, 0, 0, 0, 0, time.UTC)
 	endTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
@@ -90,7 +90,7 @@ func Test_GetMonths_By_StartTime_Year_1997_Month_10_Day_27_And_EndTime_Year_2019
 }
 
 func Test_GetMonths_By_StartTime_Year_1996_Month_2_Day_5_And_EndTime_Year_2019_Month_6_Day_10_Should_Get_280_Months_And_5_Days(t *testing.T) {
-	expectedResult := Months{280, 5}
+	expectedResult := Months{TotalMonths: 280, DaysOfMonth: 5}
 	startTime := time.Date(1996, 2, 5, 0, 0, 0, 0, time.UTC)
 	endTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
@@ -102,7 +102,7 @@ func Test_GetMonths_By_StartTime_Year_1996_Month_2_Day_5_And_EndTime_Year_2019_M
 }
 
 func Test_GetMonths_By_StartTime_Year_2019_Month_5_Day_10_And_EndTime_Year_2019_Month_6_Day_10_Should_Get_1_Months_And_0_Days(t *testing.T) {
-	expectedResult := Months{1, 0}
+	expectedResult := Months{TotalMonths: 1, DaysOfMonth: 0}
 	startTime := time.Date(2019, 5, 10, 0, 0, 0, 0, time.UTC)
 	endTime := time.Date(2019, 6, 10, 0, 0, 0, 0, time.UTC)
 
@@ -114,7 +114,7 @@ func Test_GetMonths_By_StartTime_Year_2019_Month_5_Day_10_And_EndTime_Year_2019_
 }
 
 func Test_GetMonths_By_StartTime_Year_2019_Month_2_Day_10_And_EndTime_Year_2019_Month_3_Day_10_Should_Get_1_Months_And_0_Days(t *testing.T) {
-	expectedResult := Months{1, 0}
+	expectedResult := Months{TotalMonths: 1, DaysOfMonth: 0}
 	startTime := time.Date(2019, 2, 10, 0, 0, 0, 0, time.UTC)
 	endTime := time.Date(2019, 3, 10, 0, 0, 0, 0, time.UTC)
 
