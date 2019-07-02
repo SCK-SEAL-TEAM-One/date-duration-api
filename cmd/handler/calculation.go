@@ -31,6 +31,7 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 	dates, err := decodeDate(r)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 	startTime := dates.StartDate.getTime()
 	endTime := dates.EndDate.getTime()
@@ -38,6 +39,7 @@ func CalculateDuration(w http.ResponseWriter, r *http.Request) {
 	err = json.NewEncoder(w).Encode(&duration)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 }
 
