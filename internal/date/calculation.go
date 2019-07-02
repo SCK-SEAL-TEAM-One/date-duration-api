@@ -33,6 +33,21 @@ type Months struct {
 	DaysOfMonth int `json:"days_of_month"`
 }
 
+func DurationBetween(startTime, endTime time.Time) Duration {
+	duration := endTime.Sub(startTime)
+	days := getDays(int(duration.Hours()))
+	return Duration{
+		Seconds:       int(duration.Seconds()),
+		Minutes:       int(duration.Minutes()),
+		Hours:         int(duration.Hours()),
+		Days:          days,
+		Weeks:         getWeeks(days),
+		Months:        getMonths(startTime, endTime),
+		StartFullDate: getFullDate(startTime),
+		EndFullDate:   getFullDate(endTime),
+	}
+}
+
 func getDays(hour int) int {
 	days := hour / hoursOfDay
 	return days
