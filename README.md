@@ -77,7 +77,7 @@ Method : POST
         "hours": 189768,
         "days": 7907,
         "start_full_date": "Thursday, 16 October 1997",
-        "end_full_date": "Saturday, 10 June 0",
+        "end_full_date": "Saturday, 10 June 2019",
         "weeks": {
             "total_weeks": 1129,
             "days_of_week": 4
