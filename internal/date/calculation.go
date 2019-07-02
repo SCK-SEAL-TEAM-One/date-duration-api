@@ -20,3 +20,10 @@ type Months struct {
 	TotalMonths int `json:"total_months"`
 	DaysOfMonth int `json:"days_of_month"`
 }
+
+func GetWeeks(day int) Weeks {
+	return Weeks{
+		TotalWeeks: day / 7,
+		DaysOfWeek: day % 7,
+	}
+}
